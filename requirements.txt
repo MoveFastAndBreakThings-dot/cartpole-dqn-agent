@@ -1,0 +1,21 @@
+# Core Machine Learning and Deep Learning
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.21.0
+
+# Reinforcement Learning Environment
+gymnasium>=0.29.0
+
+# GUI and Visualization
+pygame>=2.5.0
+
+# Standard Library (included with Python, but listed for completeness)
+# - collections (deque)
+# - random
+# - sys
+# - time
+# - typing
+# - os
+# - glob
+
+ 
