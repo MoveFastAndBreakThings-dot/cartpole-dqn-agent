@@ -1,83 +1,120 @@
-# CartPole DQN Agent
+# 🧠 CartPole DQN Agent
 
-![Screenshot 2025-05-24 145258](https://github.com/user-attachments/assets/f369e5ed-29c8-4892-b92b-53f84badbe7a)
+![CartPole Screenshot](https://github.com/user-attachments/assets/f369e5ed-29c8-4892-b92b-53f84badbe7a)
 
-
-A Deep Q-Network (DQN) implementation using PyTorch to solve the classic CartPole-v1 balancing problem from OpenAI Gym. The agent learns to balance a pole on a cart by taking left or right actions based on observed states. Over time, it improves its behavior and learns how to maximize the duration of balance by making smarter decisions.
-
----
-
-## 🧠 What This Project Does
-
-This project trains an artificial agent to **balance a pole** on a cart by:
-
-- Observing the current environment state (cart position, velocity, pole angle, etc.).
-- Predicting the best action (move left or right).
-- Receiving a reward after each step and learning from it.
-- Adjusting its strategy (policy) using **Deep Q-Learning**.
-
-Eventually, the agent learns to move the cart **smoothly left and right** to keep the pole upright — even across the full width of the environment.
+A Deep Q-Network (DQN) implementation using **PyTorch** to solve the classic **CartPole-v1** balancing problem from OpenAI Gym. The agent learns to balance a pole on a cart by taking smart left/right actions based on observed environment states.
 
 ---
 
-## 🚀 Features
+## 🚀 What This Project Does
 
-- ✅ Deep Q-Network using PyTorch  
+This agent learns to balance a pole by:
+
+- Observing the environment (cart position, velocity, pole angle, angular velocity)
+- Predicting the best action using a neural network
+- Receiving rewards and learning from them
+- Updating its strategy through Deep Q-Learning
+
+Eventually, the agent balances the pole **smoothly and efficiently**, even across the full width of the environment.
+
+---
+
+## ✨ Features
+
+- ✅ Deep Q-Network (DQN) built with PyTorch  
 - ✅ Experience Replay Buffer  
-- ✅ Epsilon-Greedy Exploration  
+- ✅ Epsilon-Greedy Exploration Strategy  
 - ✅ Target Network Updates  
-- ✅ Trained on CartPole-v1 environment from OpenAI Gym  
-- ✅ Live rendering for visualization  
+- ✅ Live Agent Visualization using Pygame  
+- ✅ Automatic Checkpointing & Resume Support  
+- ✅ Trained on OpenAI Gym’s CartPole-v1 environment
 
 ---
 
 ## 📚 What I Learned
 
-This project helped me understand and apply several key concepts in Reinforcement Learning and Deep Learning:
+This project helped me understand and apply key Reinforcement Learning concepts:
 
-- 🔁 How an agent interacts with an environment using actions and rewards
-- 🧠 How Deep Q-Learning works under the hood
-- 💡 Exploration vs Exploitation (Epsilon-Greedy Policy)
-- 🧮 Backpropagation, optimization, and loss minimization in PyTorch
-- 🧱 Building a training loop with memory buffer and target updates
-- 🎮 Real-time agent behavior visualization
-
-It was really cool to see the agent go from failing early to **balancing the pole for long durations** just by learning from rewards and its own past experiences.
+- How agents interact with environments via actions and rewards  
+- The mechanics of Deep Q-Learning  
+- Exploration vs Exploitation (Epsilon-Greedy Policy)  
+- Building a memory buffer and training loop  
+- Optimizing models using PyTorch  
+- Visualizing real-time agent behavior
 
 ---
 
-## 🛠️ How It Works
+## ⚙️ How It Works
 
-### 📦 Environment
-- **CartPole-v1** has 4 key state values:
-  - Cart position
-  - Cart velocity
-  - Pole angle
-  - Pole angular velocity
+### 🧠 Environment: CartPole-v1
+The environment provides a 4D state:
+- Cart Position  
+- Cart Velocity  
+- Pole Angle  
+- Pole Angular Velocity
 
-### 🕹️ Actions
-- Move Cart Left (`0`)
-- Move Cart Right (`1`)
+### 🎮 Actions
+- `0` → Move Cart Left  
+- `1` → Move Cart Right
 
 ### 🏆 Reward
-- +1 for every timestep the pole stays upright  
+- +1 reward per timestep the pole remains upright  
 - Episode ends if the pole falls or the cart goes off-screen
 
 ---
 
-## 🧪 Training Overview
+## 🧪 Training Summary
 
-The agent is trained over multiple episodes. At first, it performs randomly (exploring), but gradually starts **exploiting its learned Q-values** to act better. After ~150 episodes, the agent begins to show signs of intelligence — **balancing longer, adjusting faster, and moving efficiently**.
+The agent is trained over 400 episodes. Initially, it explores randomly. Around episode 150, it begins balancing the pole intelligently. It eventually achieves a **maximum reward of 315**.
+
+- Model checkpoints are saved after every episode in the `checkpoints/` directory.
+- If training is interrupted, it **automatically resumes from the last saved episode**.
 
 ---
 
-## 🧰 Requirements
+## 📁 Project Structure
 
-- Python 3.x  
-- PyTorch  
-- NumPy  
-- OpenAI Gym  
+- `cartpole.py` – Core DQN agent, environment handling, training logic  
+- `GUI.py` – Pygame-based visual interface to view agent behavior live  
+- `run_trained_model.py` – Runs the agent using saved model weights  
+- `requirements.txt` – All project dependencies
 
-Install dependencies:
+---
+
+## 🛠️ Setup & Installation
+
+Make sure Python 3.x is installed. Then install all required libraries using:
+
 ```bash
-pip install torch gym numpy
+pip install -r requirements.txt
+```
+
+This will automatically install all necessary packages including:
+- `torch`
+- `gym`
+- `numpy`
+- `pygame`
+
+---
+
+## ▶️ Usage
+
+To **train the agent**, run:
+
+```bash
+python cartpole.py
+```
+
+To **run the trained agent**, use:
+
+```bash
+python run_trained_model.py
+```
+
+---
+
+## 💬 Feedback
+
+If you have suggestions or run into issues, feel free to open an issue or reach out. I'm always looking to learn and improve this project!
+
+---
